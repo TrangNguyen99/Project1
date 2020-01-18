@@ -1,0 +1,32 @@
+CREATE DATABASE Project1v2
+GO
+
+USE Project1v2
+GO
+
+CREATE TABLE Distributor (
+	id VARCHAR(10) PRIMARY KEY,
+	name VARCHAR(50) NOT NULL,
+	parent_id VARCHAR(10),
+	depth INT NOT NULL
+)
+GO
+
+CREATE TABLE Sales (
+	id VARCHAR(10) FOREIGN KEY REFERENCES Distributor(id),
+	batch INT,
+	quantity INT NOT NULL,
+	commission FLOAT NOT NULL,
+	PRIMARY KEY (id, batch)
+)
+GO
+
+---
+DROP TABLE Sales
+GO
+DROP TABLE Distributor
+GO
+
+SELECT * FROM Distributor
+
+SELECT * FROM Sales
